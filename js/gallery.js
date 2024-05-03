@@ -64,6 +64,8 @@ const images = [
   },
 ];
 
+// Створюємо галерею зображень
+
 const galleryOfImages = document.querySelector('.gallery');
 const fragment = document.createDocumentFragment();
 
@@ -87,3 +89,25 @@ images.forEach(image => {
 });
 
 galleryOfImages.append(fragment);
+
+// додаэмо функціонал прослуховування кліка по елементах галереї та отримання посилання на велике зображення при кліку
+
+const clickElement = document.querySelector('.gallery');
+
+clickElement.addEventListener('click', selectImage);
+
+function selectImage(event) {
+  event.preventDefault(); // цей метод відміняє стандартну дію браузера
+
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+
+  const largeImage = event.target.dataset.source;
+
+  const instance = basicLightbox.create(`
+        <img class="galery-large-image" src="${largeImage}" style="width: 1112px; height: 640px;">
+    `);
+
+  instance.show();
+}

@@ -103,6 +103,7 @@ function selectImage(event) {
     return;
   }
 
+  // Підключаємо сторонню бібліотеку basicLightBox для відкриття модального вікна при натисканні на картинку
   const largeImage = event.target.dataset.source;
 
   const instance = basicLightbox.create(`
